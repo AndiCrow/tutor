@@ -56,7 +56,7 @@ ROOT_URLCONF = 'funproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,25 +74,38 @@ WSGI_APPLICATION = 'funproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 
+# load_dotenv()
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
-#DATABASES = {
+# DATABASES = {
+#    'default': {
+#        'ENGINE':'django.db.backends.postgresql',
+#        'NAME':os.getenv("DJANGO_DB_NAME"),
+#        'USER':os.getenv("DJANGO_DB_USER"),
+#        'PASSWORD':os.getenv("DJANGO_DB_PASSWORD"),
+#        'HOST':'localhost',
+#        'PORT':"5432",
+#    }
+# }
+
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
- #       'NAME': os.getenv("DJANGO_DB_NAMED"),
- #       'USER': os.getenv("DJANGO_DB_USER"),
- #       'PASSWORD': os.getenv("DJANGO_DB_PASSWORD"),
- #       'HOST': os.getenv("DJANGO_DB_HOST"),
- #       'PORT': '5432',
-  #  }
-#}
+#        'NAME': "Fun",
+#        'USER': 'fun-user',
+#        'PASSWORD':'rds123',
+#        'HOST':'localhost',
+#        'PORT': '5432',
+#    }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -129,6 +142,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
